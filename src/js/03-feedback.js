@@ -12,7 +12,7 @@ form.addEventListener('submit', onFormSubmit);
 populateTextareaInput();
 
 function onFormInput() {
-   const formData = {
+  const formData = {
     mail: `${input.value}`,
     message: `${textarea.value}`,
   };
@@ -36,6 +36,9 @@ function onFormSubmit(event) {
     email: email.value,
     message: message.value,
   };
+  if (email.value === '' || message.value === '') {
+    return alert('Please fill in all the fields!');
+  }
   console.log(submitFormData);
   event.target.reset();
   localStorage.removeItem(STORAGE_KEY);
