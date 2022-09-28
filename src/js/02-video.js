@@ -14,12 +14,13 @@ function onPlayerTimeupdate(data) {
   localStorage.setItem(STORAGE_KEY, `${data.seconds}`);
 }
 
-function onReloadPage() {
+function onReloadPage(event) {
   const playerTime = localStorage.getItem(STORAGE_KEY);
   player
     .setCurrentTime(playerTime)
     .then(function (seconds) {
-      // seconds = the actual time that the player seeked to
+      player.setVolume(0);
+      player.play();
     })
     .catch(function (error) {
       switch (error.name) {
